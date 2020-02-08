@@ -43,13 +43,19 @@ def obtainResponse(req,path):
   for header in req.headers:
     if header in configuration.forward_headers:
       args["headers"][header] = req.headers[header]
-  args["headers"]["host"] = configuration.origins[curOrigin].replace("https://","").replace("http://","") # Dirty way to strip to host only
+  if configuration.hostRouting:
+    args["headers"]["host"] = configuration.origins[curOrigin].replace("https://","").replace("http://","") # Dirty way to strip to host only
   try:
-    resp = func(configuration.origins[curOrigin]+path,**args)
+    resp = func(configuration.origins[curOrigin]+path, allow_redirects=not configuration.blockRedirects,**args)
   except Exception as e:
+    logger.warn("Internal Error: "+e)
     return ("Error: "+str(e)).encode("UTF-8")
   response = make_response(resp.content)
-  response.headers.set('Content-Type', resp.headers['Content-Type'])
+  if not configuration.minimal:
+    for x in resp.headers:
+      response.headers.set(x,resp.headers[x])
+  else:
+    response.headers.set('Content-Type', resp.headers['Content-Type'])
   return response
  
 # Core Code
