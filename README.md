@@ -1,2 +1,1 @@
-# Proxo
-Proxo: Remaking Proxies
+# Python3 Flask project
