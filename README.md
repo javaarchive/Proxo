@@ -1,6 +1,7 @@
 
 # Proxo - Remaking Reverse proxies
 Github: [Releases](https://github.com/javaarchive/Proxo/releases)
+
 Proxo is a Python flask project aiming to make reverse proxying better and easier. Proxo is currently a small project and isn't very stable. 
 ## Installation
 
