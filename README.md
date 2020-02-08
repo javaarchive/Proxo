@@ -1,5 +1,6 @@
 
 # Proxo - Remaking Reverse proxies
+Github: [Releases](https://github.com/javaarchive/Proxo/releases)
 Proxo is a Python flask project aiming to make reverse proxying better and easier. Proxo is currently a small project and isn't very stable. 
 ## Installation
 
@@ -16,4 +17,9 @@ The only possible ways of crashing are either the logging fails because there ar
 For now the applicaton assumes all origin servers send the Content-Type header, so it will crash if your server is very minimal. 
 ## For future reference
 In the future(by I mean very soon), I will start pointing everyone to a github release page to install Proxo instead of the glitch project because I will continue to use it for developement. I will provide everyone with a script that installs any Proxo you want from the release page. 
+## For fun
+See [releases](https://github.com/javaarchive/Proxo/releases)
+I used proxo to make a mirror of github and glitch.com for fun. I just love to make web proxies!
+## Install Script
+It's work in progress
 > Written with [StackEdit](https://stackedit.io/).
