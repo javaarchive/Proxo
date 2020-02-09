@@ -1,6 +1,7 @@
 import configuration
 from flask import *
 import requests,logging # Put after import flask to stop conflicts
+import urltools as ut
 # Optional web controller
 from controller import controller
 # Longing stuff
@@ -44,13 +45,16 @@ def obtainResponse(req,path):
     if header in configuration.forward_headers:
       args["headers"][header] = req.headers[header]
   if configuration.hostRouting:
-    args["headers"]["host"] = configuration.origins[curOrigin].replace("https://","").replace("http://","") # Dirty way to strip to host only
+    args["headers"]["host"] = ut.stripProto(configuration.origins[curOrigin])
   try:
     resp = func(configuration.origins[curOrigin]+path, allow_redirects=not configuration.blockRedirects,**args)
   except Exception as e:
     logger.warn("Internal Error: "+e)
     return ("Error: "+str(e)).encode("UTF-8")
-  response = make_response(resp.content)
+  content = resp.content
+  if configuration.fixAbsoluteUrls:
+    content = content.replace(ut.stripProto(configuration.origins[curOrigin]).encode(configuration.encoding),configuration.APP_URL.encode(configuration.encoding))
+  response = make_response(content)
   if not configuration.minimal:
     for x in resp.headers:
       response.headers.set(x,resp.headers[x])

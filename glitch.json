@@ -1,7 +1,7 @@
 {
   "install": "pip3 install --user -r requirements.txt",
   "start2": "PYTHONUNBUFFERED=true python3 server.py",
-  "start": "gunicorn -w 10 -b 0.0.0.0:3000 server:app",
+  "start": "gunicorn -w 3 -b 0.0.0.0:3000 server:app",
   "watch": {
     "ignore": [
       "\\.pyc$"
