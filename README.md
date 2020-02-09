@@ -1,11 +1,17 @@
 
+
 # Proxo - Remaking Reverse proxies
 Github: [Releases](https://github.com/javaarchive/Proxo/releases)
-
 Proxo is a Python flask project aiming to make reverse proxying better and easier. Proxo is currently a small project and isn't very stable. 
 ## Installation
 
+[details="Deprecated steps"]
+This will copy my developement version of proxo which I sometimes use to do other things
  1. Make a copy of this project on glitch: https://glitch.com/~epic-proxy(or download the code if you are running it locally)
+[/details]
+
+Current Steps(with github):
+ 1. Download a release from github and copy all the files in `Proxo-Someversion`  to your glitch directory
  2. Open `configuration.py` and find the line that defines the `origins` variable
  3. Find the line that has the `main` origin and set it to the url of your origin server. This can be a external server or a server on the same machine(use `localhost`  or `127.0.0.1` to maximize speed). 
  4. If you are in glitch the app will automatically restart and mirror your origin and you are done. If you are deploying locally proceed to step 5
